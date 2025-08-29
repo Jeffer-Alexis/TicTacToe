@@ -24,6 +24,7 @@ HttpServletResponse response)
 throws ServletException, IOException {
 GameBean game = (GameBean)
 request.getSession(true).getAttribute("gameBean");
+
 int line = Integer.parseInt(request.getParameter("Line"));
 int col = Integer.parseInt(request.getParameter("Col"));
 game.playPlayerTurn(line, col);
@@ -32,28 +33,29 @@ switch(winner){
 case NOBODY:
 if(game.hasEmptyCell()){
 game.playComputerTurn();
+winner = game.getWinner();
+}
 switch(game.getWinner()){
 case NOBODY:
 break;
 case COMPUTER:
-request.setAttribute("winner", "The computer");
+request.setAttribute("winner", "El bot");
 break;
 case USER:
-request.setAttribute("winner", "You");
+request.setAttribute("winner", "El jugador");
 break;
 }
-}
+
 break;
 case COMPUTER:
-request.setAttribute("winner", "The computer");
+request.setAttribute("winner", "El bot");
 break;
 case USER:
-request.setAttribute("winner", "You");
-
+request.setAttribute("winner", "El jugador");
 break;
 }
 if(winner == GamePlayer.NOBODY && !game.hasEmptyCell()){
-request.setAttribute("winner", "Nobody");
+request.setAttribute("winner", "Nadie");
 }
 request.getRequestDispatcher("/game.jsp").forward(request, response);
 }
