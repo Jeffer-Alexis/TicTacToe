@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Tic Tac Toe</title>
+<title>triqui 2025</title>
 </head>
 <body>
-<h1>Tic Tac Toe</h1>
+<h1>triqui 2025</h1>
 <table border="1">
 <c:forEach var="line" items="${gameBean.gridLines}">
 <tr>
